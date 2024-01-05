@@ -13,7 +13,7 @@
 }
 
 .drop-down-container {
-  width: min(14rem, 100%);
+  width: min(16rem, 100%);
 }
 
 .drop {
@@ -31,16 +31,12 @@
 }
 
 .dropdown-item:hover {
-  color: rgb(var(--secondary-color));
+  color: rgb(var(--accent-color));
   background-color: rgba(var(--black), 0.1);
 }
 
 .divider {
   display: none;
-}
-
-.down-arrow {
-  transform: rotateZ(0deg);
 }
 
 @media only screen and (max-width: 640px) {

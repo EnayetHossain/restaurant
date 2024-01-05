@@ -65,7 +65,7 @@ const Navbar = () => {
         <div className="hidden md:block">
           <Link
             to="/profile"
-            className="bg-accent-color w-16 h-16 fs-1 rounded-full text-white d-flex justify-content-center align-items-center"
+            className="bg-accent-color w-[4.5rem] h-[4.5rem] fs-1 rounded-full text-white d-flex justify-content-center align-items-center ml-8"
           >
             <BiUser></BiUser>
           </Link>

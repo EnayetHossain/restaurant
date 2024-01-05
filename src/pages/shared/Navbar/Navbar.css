@@ -1,0 +1,57 @@
+.drop-down,
+.drop-down:hover {
+  background-color: rgb(var(--white)) !important;
+  color: rgb(var(--black)) !important;
+  border-radius: 0.5em;
+  border: none;
+  padding: 0.5em 0.7em;
+  width: 100%;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.drop-down-container {
+  width: min(14rem, 100%);
+}
+
+.drop {
+  width: 100%;
+  border-radius: 0.6em;
+  padding: 1em 0 !important;
+}
+
+.search-bar {
+  width: min(50rem, 100%);
+}
+
+.search-bar input {
+  width: 100%;
+}
+
+.dropdown-item:hover {
+  color: rgb(var(--secondary-color));
+  background-color: rgba(var(--black), 0.1);
+}
+
+.divider {
+  display: none;
+}
+
+.down-arrow {
+  transform: rotateZ(0deg);
+}
+
+@media only screen and (max-width: 640px) {
+  .bar {
+    margin: 0 1em;
+  }
+
+  .divider {
+    display: block;
+    height: 1px;
+    background-color: rgba(var(--black), 0.5);
+    border: none;
+  }
+}

@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="desktop-max d-flex justify-content-between align-items-center">
         <div className="news-letter-container">
           <div>
-            <div className="d-flex justify-content-between align-items-center search-bar  overflow-hidden rounded-xl md:rounded-[1.2em] bg-white pl-4 pr-2 w-full md:w-[88%] shadow-lg">
+            <div className="d-flex justify-content-between align-items-center search-bar  overflow-hidden rounded-xl md:rounded-[1.3em] bg-white pl-4 pr-2 w-full md:w-[88%] shadow-lg">
               <input
                 type="email"
                 placeholder="Enter Your Email"

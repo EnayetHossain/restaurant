@@ -13,7 +13,7 @@ const Popular = () => {
 
   return (
     <section className="desktop-max">
-      <div className="d-flex justify-content-between align-items-center">
+      <div className="d-flex justify-content-between align-items-center mb-3">
         <span className="fs-1 fw-bold">Popular</span>
         <div className="d-flex justify-content-between align-items-center">
           <Link

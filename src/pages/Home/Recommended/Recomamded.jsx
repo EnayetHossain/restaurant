@@ -13,8 +13,8 @@ const Recommended = () => {
   } = useContext(AppContext);
 
   return (
-    <section className="desktop-max !my-36">
-      <div className="d-flex justify-content-between align-items-center">
+    <section className="desktop-max !mt-24 !mb-72">
+      <div className="d-flex justify-content-between align-items-center mb-3">
         <span className="fs-1 fw-bold">Recommended</span>
         <div className="d-flex justify-content-between align-items-center">
           <Link

@@ -1,0 +1,3 @@
+.disabled {
+  color: rgba(var(--black), 0.4);
+}

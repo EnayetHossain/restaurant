@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Slider from "../../../Components/Slider/Slider";
 import SliderButton from "../../../Components/SliderButton/SliderButton";
@@ -11,6 +11,24 @@ const Recommended = () => {
     recommendedRef,
     onRecommendedSlideChange,
   } = useContext(AppContext);
+
+  const [recommended, setRecommended] = useState([]);
+
+  useEffect(() => {
+    const getRecommended = (item) => item.IsRecommended === true;
+
+    const getData = async () => {
+      const response = await fetch(
+        "http://www.api.technicaltest.quadtheoryltd.com/api/Item?page=1&pageSize=10"
+      );
+
+      const data = await response.json();
+
+      setRecommended(data.Items.filter(getRecommended));
+    };
+
+    getData();
+  }, []);
 
   return (
     <section className="desktop-max !mt-24 !mb-72">
@@ -33,6 +51,7 @@ const Recommended = () => {
       </div>
 
       <Slider
+        data={recommended}
         slideRef={recommendedRef}
         onSlideChange={onRecommendedSlideChange}
       ></Slider>

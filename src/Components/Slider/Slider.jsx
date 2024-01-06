@@ -4,7 +4,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SliderContent from "../SliderContent/SliderContent";
 import "./Slider.css";
 
-const Slider = ({ slideRef, onSlideChange }) => {
+const Slider = ({ slideRef, onSlideChange, data }) => {
+  console.log(data);
+
   return (
     <Swiper
       slidesPerView={5}
@@ -41,29 +43,12 @@ const Slider = ({ slideRef, onSlideChange }) => {
         },
       }}
     >
-      <SwiperSlide>
-        <SliderContent></SliderContent>
-      </SwiperSlide>
-      <SwiperSlide>
-        <SliderContent></SliderContent>
-      </SwiperSlide>
-      <SwiperSlide>
-        <SliderContent></SliderContent>
-      </SwiperSlide>
-      <SwiperSlide>
-        <SliderContent></SliderContent>
-      </SwiperSlide>
-      <SwiperSlide>
-        <SliderContent></SliderContent>
-      </SwiperSlide>
-      <SwiperSlide>
-        <SliderContent></SliderContent>
-      </SwiperSlide>
-      <SwiperSlide>
-        <SliderContent></SliderContent>
-      </SwiperSlide>
+      {data?.map((dt) => (
+        <SwiperSlide key={dt.Id}>
+          <SliderContent data={dt}></SliderContent>
+        </SwiperSlide>
+      ))}
     </Swiper>
-    // <div>slider</div>
   );
 };
 

@@ -1,17 +1,18 @@
+/* eslint-disable react/prop-types */
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "./SliderContent.css";
 
-const SliderContent = () => {
+const SliderContent = ({ data }) => {
   return (
     <div className="card">
       <div className="slider-img-wrapper">
-        <img src="/images/4.jpg" alt="slider image" />
+        <img src={data.ImageUrl} alt={data.Name} />
       </div>
 
-      <div className="mt-3 text-center break-words">Name of the food</div>
+      <div className="mt-3 text-center break-words">{data.Name}</div>
     </div>
   );
 };

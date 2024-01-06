@@ -12,7 +12,7 @@ const Popular = () => {
     useContext(AppContext);
 
   return (
-    <section className="desktop-max !mb-36">
+    <section className="desktop-max">
       <div className="d-flex justify-content-between align-items-center">
         <span className="fs-1 fw-bold">Popular</span>
         <div className="d-flex justify-content-between align-items-center">

@@ -5,7 +5,7 @@ import SliderContent from "../SliderContent/SliderContent";
 import "./Slider.css";
 
 const Slider = ({ slideRef, onSlideChange, data }) => {
-  console.log(data);
+  // console.log(data);
 
   return (
     <Swiper

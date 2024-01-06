@@ -1,10 +1,15 @@
-import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { useForm } from "react-hook-form";
+import MyModal from "../../../Components/Modal/Modal";
 import Slider from "../../../Components/Slider/Slider";
 import SliderButton from "../../../Components/SliderButton/SliderButton";
 import { AppContext } from "../../../Context/AppProvider";
+import useDataFetching from "../../../hooks/useDataFetching";
 
 const Recommended = () => {
+  const [show, setShow] = useState(false);
+  const { reset } = useForm();
+
   const {
     isRecommendedFirst,
     isRecommendedLast,
@@ -12,35 +17,49 @@ const Recommended = () => {
     onRecommendedSlideChange,
   } = useContext(AppContext);
 
-  const [recommended, setRecommended] = useState([]);
+  // State for managing the locally added items
+  const [localItems, setLocalItems] = useState([]);
 
-  useEffect(() => {
-    const getRecommended = (item) => item.IsRecommended === true;
+  const filterCondition = (item) => item.IsRecommended === true;
+  const initialRecommendedData = useDataFetching(filterCondition);
 
-    const getData = async () => {
-      const response = await fetch(
-        "http://www.api.technicaltest.quadtheoryltd.com/api/Item?page=1&pageSize=10"
-      );
+  const recommendedData = [...initialRecommendedData, ...localItems];
 
-      const data = await response.json();
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-      setRecommended(data.Items.filter(getRecommended));
-    };
+  const onSubmit = (data) => {
+    // Generate unique Id
+    data.Id = Date.now().toString();
+    data.IsPopular = false;
+    data.IsRecommended = true;
 
-    getData();
-  }, []);
+    // Update the state for locally added items
+    setLocalItems((prevItems) => [...prevItems, data]);
+    console.log(recommendedData);
+    // Reset form and hide the pop-up
+    reset();
+    setShow(false);
+  };
 
   return (
     <section className="desktop-max !mt-24 !mb-72">
+      <MyModal
+        show={show}
+        handleClose={handleClose}
+        submit={onSubmit}
+      ></MyModal>
+
       <div className="d-flex justify-content-between align-items-center mb-3">
         <span className="fs-1 fw-bold">Recommended</span>
         <div className="d-flex justify-content-between align-items-center">
-          <Link
+          <button
+            type="button"
             className="fs-3 font-medium mr-4 text-accent-color"
-            to={"/add-more"}
+            onClick={handleShow}
           >
             AddMore
-          </Link>
+          </button>
 
           <SliderButton
             slideRef={recommendedRef}
@@ -51,7 +70,7 @@ const Recommended = () => {
       </div>
 
       <Slider
-        data={recommended}
+        data={recommendedData}
         slideRef={recommendedRef}
         onSlideChange={onRecommendedSlideChange}
       ></Slider>

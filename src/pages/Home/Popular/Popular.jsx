@@ -1,44 +1,66 @@
-import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { useForm } from "react-hook-form";
 import "swiper/css";
 import "swiper/css/pagination";
+import MyModal from "../../../Components/Modal/Modal";
 import Slider from "../../../Components/Slider/Slider";
 import SliderButton from "../../../Components/SliderButton/SliderButton";
 import { AppContext } from "../../../Context/AppProvider";
+import useDataFetching from "../../../hooks/useDataFetching";
 import "./Popular.css";
 
 const Popular = () => {
+  const [show, setShow] = useState(false);
+  const { reset } = useForm();
+
+  // State for managing the locally added items
+  const [localItems, setLocalItems] = useState([]);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const { onPopularSlideChange, popularRef, isPopularFirst, isPopularLast } =
     useContext(AppContext);
 
-  const [popular, setPopular] = useState([]);
+  // Fetch initial data from the database
+  const filterCondition = (item) => item.IsPopular === true;
+  const initialPopularData = useDataFetching(filterCondition);
 
-  useEffect(() => {
-    const getPopular = (item) => item.IsPopular === true;
+  // Combine the initial data with locally added items
+  const popularData = [...initialPopularData, ...localItems];
 
-    const getData = async () => {
-      const response = await fetch(
-        "http://www.api.technicaltest.quadtheoryltd.com/api/Item?page=1&pageSize=10"
-      );
+  const onSubmit = (data) => {
+    // Generate unique Id
+    data.Id = Date.now().toString();
+    data.IsPopular = true;
+    data.IsRecommended = false;
 
-      const data = await response.json();
-      setPopular(data.Items.filter(getPopular));
-    };
-
-    getData();
-  }, []);
+    // Update the state for locally added items
+    setLocalItems((prevItems) => [...prevItems, data]);
+    console.log(popularData);
+    // Reset form and hide the pop-up
+    reset();
+    setShow(false);
+  };
 
   return (
     <section className="desktop-max">
+      <MyModal
+        show={show}
+        handleClose={handleClose}
+        submit={onSubmit}
+      ></MyModal>
+
       <div className="d-flex justify-content-between align-items-center mb-3">
         <span className="fs-1 fw-bold">Popular</span>
         <div className="d-flex justify-content-between align-items-center">
-          <Link
+          <button
+            type="button"
             className="fs-3 font-medium mr-4 text-accent-color"
-            to={"/add-more"}
+            onClick={handleShow}
           >
             AddMore
-          </Link>
+          </button>
 
           <SliderButton
             slideRef={popularRef}
@@ -49,7 +71,7 @@ const Popular = () => {
       </div>
 
       <Slider
-        data={popular}
+        data={popularData}
         slideRef={popularRef}
         onSlideChange={onPopularSlideChange}
       ></Slider>

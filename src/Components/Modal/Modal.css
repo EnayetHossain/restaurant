@@ -1,0 +1,6 @@
+.modal-btn,
+.modal-btn:hover {
+  font-size: 1.6rem;
+  background-color: rgb(var(--accent-color)) !important;
+  border: none;
+}

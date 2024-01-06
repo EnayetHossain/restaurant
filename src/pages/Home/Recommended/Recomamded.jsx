@@ -51,7 +51,7 @@ const Recommended = () => {
       ></MyModal>
 
       <div className="d-flex justify-content-between align-items-center mb-3">
-        <span className="fs-1 fw-bold">Recommended</span>
+        <span className="fs-1">Recommended</span>
         <div className="d-flex justify-content-between align-items-center">
           <button
             type="button"

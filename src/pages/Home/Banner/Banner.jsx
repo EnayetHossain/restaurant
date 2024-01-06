@@ -2,13 +2,13 @@ import "./Banner.css";
 
 const Banner = () => {
   return (
-    <header className="my-32 md:my-52 px-3">
+    <header className="my-32 md:my-52 md:px-3">
       <div className="desktop-max bg-secondary-color text-white rounded-[1.8em] hero-container">
         <div className="hero-content">
-          <h1 className="text-6xl font-semibold break-words max-w-[40rem]">
+          <h1 className="text-5xl md:text-6xl font-medium break-words max-w-[40rem]">
             Deliver Food To Your Door Step|
           </h1>
-          <p className="text-3xl hero-description">
+          <p className="text-2xl md:text-3xl hero-description">
             Authentic Food|,Quick Service Fast Delivery
           </p>
         </div>

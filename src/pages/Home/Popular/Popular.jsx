@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import { useForm } from "react-hook-form";
 import "swiper/css";
 import "swiper/css/pagination";
 import MyModal from "../../../Components/Modal/Modal";
@@ -11,7 +10,6 @@ import "./Popular.css";
 
 const Popular = () => {
   const [show, setShow] = useState(false);
-  const { reset } = useForm();
 
   // State for managing the locally added items
   const [localItems, setLocalItems] = useState([]);
@@ -37,10 +35,9 @@ const Popular = () => {
 
     // Update the state for locally added items
     setLocalItems((prevItems) => [...prevItems, data]);
-    console.log(popularData);
+
     // Reset form and hide the pop-up
-    reset();
-    setShow(false);
+    document.getElementById("submission-form").reset();
   };
 
   return (

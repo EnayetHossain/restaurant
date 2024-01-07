@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import { useForm } from "react-hook-form";
 import MyModal from "../../../Components/Modal/Modal";
 import Slider from "../../../Components/Slider/Slider";
 import SliderButton from "../../../Components/SliderButton/SliderButton";
@@ -8,7 +7,6 @@ import useDataFetching from "../../../hooks/useDataFetching";
 
 const Recommended = () => {
   const [show, setShow] = useState(false);
-  const { reset } = useForm();
 
   const {
     isRecommendedFirst,
@@ -36,10 +34,9 @@ const Recommended = () => {
 
     // Update the state for locally added items
     setLocalItems((prevItems) => [...prevItems, data]);
-    console.log(recommendedData);
+
     // Reset form and hide the pop-up
-    reset();
-    setShow(false);
+    document.getElementById("submission-form").reset();
   };
 
   return (

@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+import { useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useForm } from "react-hook-form";
@@ -14,6 +15,12 @@ const MyModal = ({ show, handleClose, submit }) => {
     formState: { errors },
   } = useForm();
 
+  useEffect(() => {
+    if (!show) {
+      reset();
+    }
+  }, [show, reset]);
+
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
@@ -22,6 +29,7 @@ const MyModal = ({ show, handleClose, submit }) => {
       <Modal.Body>
         <form
           className="d-flex flex-column justify-content-start"
+          id="submission-form"
           onSubmit={handleSubmit(submit)}
         >
           <input

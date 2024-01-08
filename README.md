@@ -52,17 +52,17 @@ Make sure you have the following tools installed on your machine:
 
 ## Problem and solution
 
-### 1. No data in the live website
+### 1. No data on the live website
 
-Data is not appearing in the `Popular` and `Recommended` section.
+Data do not appear in the `Popular` and `Recommended` sections.
 
 #### Solution
 
-This project is hosted on the `netlify` and netlify by default blocks any unsecure connection. This website is fetching data from a API that is hosted using `http` it doesn't have any ssl certificate so `netlify` will block this API calls. To solve this problem you need to go to the site settings and need to allow `Insecure content` manually.
+This project is hosted on the `netlify` and netlify by default blocks any insecure connection. This website is fetching data from an API that is hosted using `http` it doesn't have any SSL certificate so `netlify` will block these API calls. To solve this problem you need to go to the site settings and allow `Insecure content` manually.
 
 #### Illustration
 
-1. ![Problem Illustration]("C:\Users\Enayet Hossain\Downloads\FireShot\no-data.png")
+1. ![no-data](https://github.com/EnayetHossain/restaurant/assets/79244474/102f749d-6c2f-474a-9499-b757554a88b4)
 
 ## License
 

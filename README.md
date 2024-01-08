@@ -62,7 +62,37 @@ This project is hosted on the `netlify` and netlify by default blocks any insecu
 
 #### Illustration
 
-1. ![no-data](https://github.com/EnayetHossain/restaurant/assets/79244474/102f749d-6c2f-474a-9499-b757554a88b4)
+![no-data](https://github.com/EnayetHossain/restaurant/assets/79244474/102f749d-6c2f-474a-9499-b757554a88b4)
+
+## On Chrome
+
+# Click here
+![click-here](https://github.com/EnayetHossain/restaurant/assets/79244474/c35daa30-90e0-490c-b141-2b18a6204c38)
+
+# Goto Site settings
+![site-settings](https://github.com/EnayetHossain/restaurant/assets/79244474/9239bf23-8584-4577-a279-11eba4f0eb55)
+
+# Scroll down and find Insecure content
+![insecure-content](https://github.com/EnayetHossain/restaurant/assets/79244474/7c532b9f-7213-43aa-9d3d-9fd1c8876d74)
+
+# Change it to allow
+![change](https://github.com/EnayetHossain/restaurant/assets/79244474/703fc350-9d0f-4365-8d18-d4032cf0603f)
+
+And now refresh your window you should see data now.
+
+## On Firefox
+
+# Click here
+![firefox-click](https://github.com/EnayetHossain/restaurant/assets/79244474/b0a5aa67-ba56-466c-83a2-ac540ab0abbd)
+
+# Goto Connection secure
+![connection](https://github.com/EnayetHossain/restaurant/assets/79244474/36a00572-f0e6-47c9-af38-32c596881c70)
+
+# Disable Protection
+![das](https://github.com/EnayetHossain/restaurant/assets/79244474/355f3f70-c8ff-45d8-ab0a-9f6529badee9)
+
+And now you should see the data.
+
 
 ## License
 

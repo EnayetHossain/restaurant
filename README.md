@@ -1,5 +1,7 @@
 # Resturent
 
+[Click here to visit the website](https://endearing-llama-0891ce.netlify.app/)
+
 ## Table of Contents
 
 - [Getting Started](#getting-started)

@@ -1,6 +1,4 @@
-# Your Project Name
-
-Brief project description goes here.
+# Resturent
 
 ## Table of Contents
 

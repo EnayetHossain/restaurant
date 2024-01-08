@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useContext, useState } from "react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -5,27 +6,23 @@ import MyModal from "../../../Components/Modal/Modal";
 import Slider from "../../../Components/Slider/Slider";
 import SliderButton from "../../../Components/SliderButton/SliderButton";
 import { AppContext } from "../../../Context/AppProvider";
-import useDataFetching from "../../../hooks/useDataFetching";
 import "./Popular.css";
 
-const Popular = () => {
+const Popular = ({ initialData }) => {
   const [show, setShow] = useState(false);
-
-  // State for managing the locally added items
   const [localItems, setLocalItems] = useState([]);
 
+  const popularFilter = (item) => item.IsPopular === true;
+
+  // State for managing the locally added items
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const { onPopularSlideChange, popularRef, isPopularFirst, isPopularLast } =
     useContext(AppContext);
 
-  // Fetch initial data from the database
-  const filterCondition = (item) => item.IsPopular === true;
-  const initialPopularData = useDataFetching(filterCondition);
-
   // Combine the initial data with locally added items
-  const popularData = [...initialPopularData, ...localItems];
+  const popularData = [...initialData, ...localItems].filter(popularFilter);
 
   const onSubmit = (data) => {
     // Generate unique Id
@@ -35,6 +32,7 @@ const Popular = () => {
 
     // Update the state for locally added items
     setLocalItems((prevItems) => [...prevItems, data]);
+    console.log(popularData);
 
     // Reset form and hide the pop-up
     document.getElementById("submission-form").reset();

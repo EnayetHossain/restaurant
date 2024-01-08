@@ -1,12 +1,15 @@
+/* eslint-disable react/prop-types */
 import { useContext, useState } from "react";
 import MyModal from "../../../Components/Modal/Modal";
 import Slider from "../../../Components/Slider/Slider";
 import SliderButton from "../../../Components/SliderButton/SliderButton";
 import { AppContext } from "../../../Context/AppProvider";
-import useDataFetching from "../../../hooks/useDataFetching";
 
-const Recommended = () => {
+const Recommended = ({ initialData }) => {
   const [show, setShow] = useState(false);
+  const [localItems, setLocalItems] = useState([]);
+
+  const recommendedFilter = (item) => item.IsRecommended === true;
 
   const {
     isRecommendedFirst,
@@ -15,13 +18,9 @@ const Recommended = () => {
     onRecommendedSlideChange,
   } = useContext(AppContext);
 
-  // State for managing the locally added items
-  const [localItems, setLocalItems] = useState([]);
-
-  const filterCondition = (item) => item.IsRecommended === true;
-  const initialRecommendedData = useDataFetching(filterCondition);
-
-  const recommendedData = [...initialRecommendedData, ...localItems];
+  const recommendedData = [...initialData, ...localItems].filter(
+    recommendedFilter
+  );
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);

@@ -11,7 +11,6 @@ const MyModal = ({ show, handleClose, submit }) => {
     register,
     handleSubmit,
     reset,
-    setValue,
     formState: { errors },
   } = useForm();
 
@@ -57,6 +56,7 @@ const MyModal = ({ show, handleClose, submit }) => {
           {errors.ImageUrl && (
             <span className="text-danger">Please provide the image URL</span>
           )}
+
           <input className="bg-primary text-white py-2 my-3" type="submit" />
         </form>
       </Modal.Body>
